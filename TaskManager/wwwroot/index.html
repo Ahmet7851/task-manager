@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Görev Yöneticisi</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #4a90e2;
+            --secondary-color: #f5f6fa;
+            --success-color: #2ecc71;
+            --danger-color: #e74c3c;
+            --warning-color: #f1c40f;
+        }
+
+        body {
+            background-color: var(--secondary-color);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .card {
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            transition: transform 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .task-card {
+            border-left: 5px solid var(--primary-color);
+        }
+
+        .task-card.todo {
+            border-left-color: var(--warning-color);
+        }
+
+        .task-card.in-progress {
+            border-left-color: var(--primary-color);
+        }
+
+        .task-card.completed {
+            border-left-color: var(--success-color);
+        }
+
+        .btn {
+            border-radius: 8px;
+            padding: 8px 16px;
+            font-weight: 500;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+
+        .btn-success {
+            background-color: var(--success-color);
+            border-color: var(--success-color);
+        }
+
+        .btn-danger {
+            background-color: var(--danger-color);
+            border-color: var(--danger-color);
+        }
+
+        .form-control {
+            border-radius: 8px;
+            padding: 10px 15px;
+        }
+
+        .form-select {
+            border-radius: 8px;
+            padding: 10px 15px;
+        }
+
+        .nav-tabs {
+            border-bottom: 2px solid var(--primary-color);
+        }
+
+        .nav-tabs .nav-link {
+            border: none;
+            color: #666;
+            font-weight: 500;
+            padding: 10px 20px;
+        }
+
+        .nav-tabs .nav-link.active {
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--primary-color);
+        }
+
+        .task-actions {
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .task-card:hover .task-actions {
+            opacity: 1;
+        }
+
+        .status-badge {
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.8em;
+            font-weight: 500;
+        }
+
+        .status-badge.todo {
+            background-color: #fff3cd;
+            color: #856404;
+        }
+
+        .status-badge.in-progress {
+            background-color: #cce5ff;
+            color: #004085;
+        }
+
+        .status-badge.completed {
+            background-color: #d4edda;
+            color: #155724;
+        }
+
+        .task-date {
+            font-size: 0.85em;
+            color: #666;
+        }
+
+        .modal-content {
+            border-radius: 15px;
+        }
+
+        .modal-header {
+            border-bottom: none;
+            padding: 20px;
+        }
+
+        .modal-body {
+            padding: 20px;
+        }
+
+        .modal-footer {
+            border-top: none;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-4">
+        <!-- Giriş/Kayıt Formu -->
+        <div id="authSection">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <h2 class="text-center mb-4">Görev Yöneticisi</h2>
+                    <div class="card">
+                        <div class="card-body">
+                            <ul class="nav nav-tabs" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active" data-bs-toggle="tab" href="#loginForm">
+                                        <i class="fas fa-sign-in-alt me-2"></i>Giriş Yap
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" data-bs-toggle="tab" href="#registerForm">
+                                        <i class="fas fa-user-plus me-2"></i>Kayıt Ol
+                                    </a>
+                                </li>
+                            </ul>
+                            <div class="tab-content mt-4">
+                                <div id="loginForm" class="tab-pane active">
+                                    <form id="loginFormElement">
+                                        <div class="mb-3">
+                                            <label class="form-label">
+                                                <i class="fas fa-user me-2"></i>Kullanıcı Adı:
+                                            </label>
+                                            <input type="text" class="form-control" name="username" required>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label">
+                                                <i class="fas fa-lock me-2"></i>Şifre:
+                                            </label>
+                                            <input type="password" class="form-control" name="password" required>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary w-100">
+                                            <i class="fas fa-sign-in-alt me-2"></i>Giriş Yap
+                                        </button>
+                                    </form>
+                                </div>
+                                <div id="registerForm" class="tab-pane fade">
+                                    <form id="registerFormElement">
+                                        <div class="mb-3">
+                                            <label class="form-label">
+                                                <i class="fas fa-user me-2"></i>Kullanıcı Adı:
+                                            </label>
+                                            <input type="text" class="form-control" name="username" required>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label">
+                                                <i class="fas fa-envelope me-2"></i>E-posta:
+                                            </label>
+                                            <input type="email" class="form-control" name="email" required>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label">
+                                                <i class="fas fa-lock me-2"></i>Şifre:
+                                            </label>
+                                            <input type="password" class="form-control" name="password" required>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary w-100">
+                                            <i class="fas fa-user-plus me-2"></i>Kayıt Ol
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Görev Yönetimi Bölümü -->
+        <div id="taskSection" class="hidden">
+            <div class="row mb-4">
+                <div class="col-12">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h2><i class="fas fa-tasks me-2"></i>Görevlerim</h2>
+                        <div>
+                            <button class="btn btn-success me-2" data-bs-toggle="modal" data-bs-target="#addTaskModal">
+                                <i class="fas fa-plus me-2"></i>Yeni Görev
+                            </button>
+                            <button class="btn btn-danger" onclick="logout()">
+                                <i class="fas fa-sign-out-alt me-2"></i>Çıkış Yap
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Görev Filtreleme -->
+            <div class="row mb-4">
+                <div class="col-md-4">
+                    <label class="form-label">
+                        <i class="fas fa-filter me-2"></i>Görevleri Filtrele:
+                    </label>
+                    <select class="form-select" onchange="loadTasks(this.value)">
+                        <option value="all">Tümü</option>
+                        <option value="daily">Günlük</option>
+                        <option value="weekly">Haftalık</option>
+                        <option value="monthly">Aylık</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Görev Listesi -->
+            <div id="taskList" class="row"></div>
+        </div>
+    </div>
+
+    <!-- Görev Ekleme Modal -->
+    <div class="modal fade" id="addTaskModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">
+                        <i class="fas fa-plus-circle me-2"></i>Yeni Görev Ekle
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="addTaskForm">
+                        <div class="mb-3">
+                            <label class="form-label">
+                                <i class="fas fa-heading me-2"></i>Başlık:
+                            </label>
+                            <input type="text" class="form-control" name="title" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">
+                                <i class="fas fa-align-left me-2"></i>Açıklama:
+                            </label>
+                            <textarea class="form-control" name="description" rows="3"></textarea>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">
+                                    <i class="fas fa-calendar-alt me-2"></i>Başlangıç:
+                                </label>
+                                <input type="datetime-local" class="form-control" name="startDate" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">
+                                    <i class="fas fa-calendar-check me-2"></i>Bitiş:
+                                </label>
+                                <input type="datetime-local" class="form-control" name="endDate" required>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-success w-100">
+                            <i class="fas fa-plus me-2"></i>Görev Ekle
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Görev Düzenleme Modal -->
+    <div class="modal fade" id="editTaskModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">
+                        <i class="fas fa-edit me-2"></i>Görevi Düzenle
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="editTaskForm">
+                        <input type="hidden" name="taskId">
+                        <div class="mb-3">
+                            <label class="form-label">
+                                <i class="fas fa-heading me-2"></i>Başlık:
+                            </label>
+                            <input type="text" class="form-control" name="title" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">
+                                <i class="fas fa-align-left me-2"></i>Açıklama:
+                            </label>
+                            <textarea class="form-control" name="description" rows="3"></textarea>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">
+                                    <i class="fas fa-calendar-alt me-2"></i>Başlangıç:
+                                </label>
+                                <input type="datetime-local" class="form-control" name="startDate" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">
+                                    <i class="fas fa-calendar-check me-2"></i>Bitiş:
+                                </label>
+                                <input type="datetime-local" class="form-control" name="endDate" required>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">
+                                <i class="fas fa-tasks me-2"></i>Durum:
+                            </label>
+                            <select class="form-select" name="status">
+                                <option value="0">Yapılacak</option>
+                                <option value="1">Devam Ediyor</option>
+                                <option value="2">Tamamlandı</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">
+                            <i class="fas fa-save me-2"></i>Değişiklikleri Kaydet
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const API_URL = 'http://localhost:5246';
+        let token = localStorage.getItem('token');
+
+        // Sayfa yüklendiğinde kontrol et
+        document.addEventListener('DOMContentLoaded', () => {
+            if (token) {
+                showTaskSection();
+                loadTasks('all');
+            } else {
+                showAuthSection();
+            }
+        });
+
+        // Giriş Formu
+        document.getElementById('loginFormElement').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const formData = new FormData(e.target);
+            try {
+                const response = await fetch(`${API_URL}/api/auth/login`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        username: formData.get('username'),
+                        password: formData.get('password')
+                    })
+                });
+                
+                if (!response.ok) throw new Error('Giriş başarısız');
+                
+                const data = await response.json();
+                token = data.token;
+                localStorage.setItem('token', token);
+                showTaskSection();
+                loadTasks('all');
+            } catch (error) {
+                alert('Giriş yapılırken bir hata oluştu: ' + error.message);
+            }
+        });
+
+        // Kayıt Formu
+        document.getElementById('registerFormElement').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const formData = new FormData(e.target);
+            try {
+                const response = await fetch(`${API_URL}/api/auth/register`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        username: formData.get('username'),
+                        email: formData.get('email'),
+                        password: formData.get('password')
+                    })
+                });
+                
+                if (!response.ok) throw new Error('Kayıt başarısız');
+                
+                const data = await response.json();
+                token = data.token;
+                localStorage.setItem('token', token);
+                showTaskSection();
+                loadTasks('all');
+            } catch (error) {
+                alert('Kayıt olurken bir hata oluştu: ' + error.message);
+            }
+        });
+
+        // Görev Ekleme Formu
+        document.getElementById('addTaskForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const formData = new FormData(e.target);
+            try {
+                const response = await fetch(`${API_URL}/api/tasks`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}`
+                    },
+                    body: JSON.stringify({
+                        title: formData.get('title'),
+                        description: formData.get('description'),
+                        startDate: formData.get('startDate'),
+                        endDate: formData.get('endDate')
+                    })
+                });
+                
+                if (!response.ok) throw new Error('Görev eklenemedi');
+                
+                e.target.reset();
+                bootstrap.Modal.getInstance(document.getElementById('addTaskModal')).hide();
+                loadTasks('all');
+            } catch (error) {
+                alert('Görev eklenirken bir hata oluştu: ' + error.message);
+            }
+        });
+
+        // Görev Düzenleme Formu
+        document.getElementById('editTaskForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const formData = new FormData(e.target);
+            const taskId = formData.get('taskId');
+            try {
+                const response = await fetch(`${API_URL}/api/tasks/${taskId}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}`
+                    },
+                    body: JSON.stringify({
+                        title: formData.get('title'),
+                        description: formData.get('description'),
+                        startDate: formData.get('startDate'),
+                        endDate: formData.get('endDate'),
+                        status: formData.get('status')
+                    })
+                });
+                
+                if (!response.ok) throw new Error('Görev güncellenemedi');
+                
+                bootstrap.Modal.getInstance(document.getElementById('editTaskModal')).hide();
+                loadTasks('all');
+            } catch (error) {
+                alert('Görev güncellenirken bir hata oluştu: ' + error.message);
+            }
+        });
+
+        // Görevleri Yükle
+        async function loadTasks(period) {
+            try {
+                const response = await fetch(`${API_URL}/api/tasks?period=${period}`, {
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                });
+                
+                if (!response.ok) throw new Error('Görevler yüklenemedi');
+                
+                const tasks = await response.json();
+                displayTasks(tasks);
+            } catch (error) {
+                alert('Görevler yüklenirken bir hata oluştu: ' + error.message);
+            }
+        }
+
+        // Görevleri Görüntüle
+        function displayTasks(tasks) {
+            const taskList = document.getElementById('taskList');
+            taskList.innerHTML = '';
+            
+            tasks.forEach(task => {
+                const statusMap = {
+                    0: { class: 'todo', text: 'Yapılacak' },
+                    1: { class: 'in-progress', text: 'Devam Ediyor' },
+                    2: { class: 'completed', text: 'Tamamlandı' }
+                };
+
+                const status = statusMap[task.status] || statusMap[0];
+
+                const col = document.createElement('div');
+                col.className = 'col-md-6 col-lg-4 mb-4';
+                col.innerHTML = `
+                    <div class="card task-card ${status.class}">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-start mb-3">
+                                <h5 class="card-title">${task.title}</h5>
+                                <span class="status-badge ${status.class}">${status.text}</span>
+                            </div>
+                            <p class="card-text">${task.description || 'Açıklama yok'}</p>
+                            <div class="task-date mb-3">
+                                <div>
+                                    <i class="fas fa-calendar-alt me-2"></i>
+                                    Başlangıç: ${new Date(task.startDate).toLocaleString()}
+                                </div>
+                                <div>
+                                    <i class="fas fa-calendar-check me-2"></i>
+                                    Bitiş: ${new Date(task.endDate).toLocaleString()}
+                                </div>
+                            </div>
+                            <div class="task-actions d-flex justify-content-between">
+                                <button class="btn btn-primary btn-sm" onclick="editTask(${task.id})">
+                                    <i class="fas fa-edit me-1"></i>Düzenle
+                                </button>
+                                <button class="btn btn-danger btn-sm" onclick="deleteTask(${task.id})">
+                                    <i class="fas fa-trash-alt me-1"></i>Sil
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                taskList.appendChild(col);
+            });
+        }
+
+        // Görev Düzenleme Modalını Aç
+        async function editTask(taskId) {
+            try {
+                const task = await getTask(taskId);
+                const form = document.getElementById('editTaskForm');
+                
+                form.elements['taskId'].value = task.id;
+                form.elements['title'].value = task.title;
+                form.elements['description'].value = task.description || '';
+                form.elements['startDate'].value = new Date(task.startDate).toISOString().slice(0, 16);
+                form.elements['endDate'].value = new Date(task.endDate).toISOString().slice(0, 16);
+                form.elements['status'].value = task.status;
+                
+                new bootstrap.Modal(document.getElementById('editTaskModal')).show();
+            } catch (error) {
+                alert('Görev bilgileri alınırken bir hata oluştu: ' + error.message);
+            }
+        }
+
+        // Görev Bilgilerini Al
+        async function getTask(taskId) {
+            const response = await fetch(`${API_URL}/api/tasks/${taskId}`, {
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            });
+            if (!response.ok) throw new Error('Görev bilgileri alınamadı');
+            return await response.json();
+        }
+
+        // Görev Sil
+        async function deleteTask(taskId) {
+            if (!confirm('Bu görevi silmek istediğinizden emin misiniz?')) return;
+            
+            try {
+                const response = await fetch(`${API_URL}/api/tasks/${taskId}`, {
+                    method: 'DELETE',
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                });
+                
+                if (!response.ok) throw new Error('Görev silinemedi');
+                
+                loadTasks('all');
+            } catch (error) {
+                alert('Görev silinirken bir hata oluştu: ' + error.message);
+            }
+        }
+
+        // Çıkış Yap
+        function logout() {
+            localStorage.removeItem('token');
+            token = null;
+            showAuthSection();
+        }
+
+        // Bölüm Görünürlüğü
+        function showAuthSection() {
+            document.getElementById('authSection').classList.remove('hidden');
+            document.getElementById('taskSection').classList.add('hidden');
+        }
+
+        function showTaskSection() {
+            document.getElementById('authSection').classList.add('hidden');
+            document.getElementById('taskSection').classList.remove('hidden');
+        }
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html> 
