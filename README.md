@@ -92,10 +92,10 @@ Task Manager, modern iş hayatının karmaşık görev yönetimi ihtiyaçların�
 
 ### Front-end kullanılarak bir arayüz eklenmiş şekilde
 <div align="center">
-  <img src="screenshots/login.png" alt="Giriş Ekranı" width="400"/>
-  <img src="screenshots/signup.png" alt="Kayıt Ekranı" width="400"/>
-  <img src="screenshots/task-create.png" alt="Görev Oluşturma" width="400"/>
-  <img src="screenshots/task-list.png" alt="Görev Listesi" width="400"/>
+  <img src="https://raw.githubusercontent.com/Ahmet7851/task-manager/refs/heads/main/Screeenshots/login.png" alt="Giriş Ekranı" width="400"/>
+  <img src="https://raw.githubusercontent.com/Ahmet7851/task-manager/refs/heads/main/Screeenshots/signup.png" alt="Kayıt Ekranı" width="400"/>
+  <img src="[screenshots/task-create.png](https://raw.githubusercontent.com/Ahmet7851/task-manager/refs/heads/main/Screeenshots/create-task.png)" alt="Görev Oluşturma" width="400"/>
+  <img src="https://raw.githubusercontent.com/Ahmet7851/task-manager/refs/heads/main/Screeenshots/task-list.png" alt="Görev Listesi" width="400"/>
 </div>
 
 ## 🌐 API Kullanımı
