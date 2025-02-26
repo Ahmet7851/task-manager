@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\ahmet\\OneDrive\\Desktop\\Task Manager\\TaskManager\\TaskManager.csproj": {}
+    "C:\\Users\\ahmet\\OneDrive\\Belgeler\\GitHub\\Task Manager\\TaskManager\\TaskManager.csproj": {}
   },
   "projects": {
-    "C:\\Users\\ahmet\\OneDrive\\Desktop\\Task Manager\\TaskManager\\TaskManager.csproj": {
+    "C:\\Users\\ahmet\\OneDrive\\Belgeler\\GitHub\\Task Manager\\TaskManager\\TaskManager.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ahmet\\OneDrive\\Desktop\\Task Manager\\TaskManager\\TaskManager.csproj",
+        "projectUniqueName": "C:\\Users\\ahmet\\OneDrive\\Belgeler\\GitHub\\Task Manager\\TaskManager\\TaskManager.csproj",
         "projectName": "TaskManager",
-        "projectPath": "C:\\Users\\ahmet\\OneDrive\\Desktop\\Task Manager\\TaskManager\\TaskManager.csproj",
+        "projectPath": "C:\\Users\\ahmet\\OneDrive\\Belgeler\\GitHub\\Task Manager\\TaskManager\\TaskManager.csproj",
         "packagesPath": "C:\\Users\\ahmet\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ahmet\\OneDrive\\Desktop\\Task Manager\\TaskManager\\obj\\",
+        "outputPath": "C:\\Users\\ahmet\\OneDrive\\Belgeler\\GitHub\\Task Manager\\TaskManager\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\ahmet\\AppData\\Roaming\\NuGet\\NuGet.Config",

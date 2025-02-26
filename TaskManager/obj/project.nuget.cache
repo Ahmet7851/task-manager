@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "MlhYWQS/2F5KsPkfikwyJ1H26Oxlcgq8JKqqmDyarOVKiQKC7ZotBusdDM6quGtUvnOP7hQMM8auY3Ijk5a0HQ==",
+  "dgSpecHash": "+/TlQwPUGDuTF8u9FpPfZbUHDP1mxs6O7L3VtIHRLn7lf+FUBcG2HlXnVvF5BMO3TZf0WKOyFnxrc7WzMEk+ug==",
   "success": true,
-  "projectFilePath": "C:\\Users\\ahmet\\OneDrive\\Desktop\\Task Manager\\TaskManager\\TaskManager.csproj",
+  "projectFilePath": "C:\\Users\\ahmet\\OneDrive\\Belgeler\\GitHub\\Task Manager\\TaskManager\\TaskManager.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ahmet\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
     "C:\\Users\\ahmet\\.nuget\\packages\\azure.identity\\1.11.4\\azure.identity.1.11.4.nupkg.sha512",

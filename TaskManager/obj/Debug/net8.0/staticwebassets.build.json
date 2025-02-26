@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "wJLbThVMo7eVaSHtpv0XEomnROI3WtE8Bf8nMT21W0w=",
+  "Hash": "iZ2bZso8Tsv3SPGNzuljgPgbdlXtr3H2zmpja1hCZXc=",
   "Source": "TaskManager",
   "BasePath": "_content/TaskManager",
   "Mode": "Default",
@@ -10,17 +10,17 @@
     {
       "Name": "TaskManager\\wwwroot",
       "Source": "TaskManager",
-      "ContentRoot": "C:\\Users\\ahmet\\OneDrive\\Desktop\\Task Manager\\TaskManager\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ahmet\\OneDrive\\Belgeler\\GitHub\\Task Manager\\TaskManager\\wwwroot\\",
       "BasePath": "_content/TaskManager",
       "Pattern": "**"
     }
   ],
   "Assets": [
     {
-      "Identity": "C:\\Users\\ahmet\\OneDrive\\Desktop\\Task Manager\\TaskManager\\wwwroot\\index.html",
+      "Identity": "C:\\Users\\ahmet\\OneDrive\\Belgeler\\GitHub\\Task Manager\\TaskManager\\wwwroot\\index.html",
       "SourceId": "TaskManager",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\ahmet\\OneDrive\\Desktop\\Task Manager\\TaskManager\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ahmet\\OneDrive\\Belgeler\\GitHub\\Task Manager\\TaskManager\\wwwroot\\",
       "BasePath": "_content/TaskManager",
       "RelativePath": "index.html",
       "AssetKind": "All",
