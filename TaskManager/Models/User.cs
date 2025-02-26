@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 
 namespace TaskManager.Models;
-
+//Deneme satırı
 public class User
 {
     [Key]
