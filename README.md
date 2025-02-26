@@ -86,7 +86,7 @@ Task Manager, modern iş hayatının karmaşık görev yönetimi ihtiyaçların�
 ## 📱 Ekran Görüntüleri
 ### Back-end kısmı Front-end kullanılarak bir arayüz eklenmemiş şekilde
 <div align="center">
-  <img src="[/Screenshots/back-end.png](https://raw.githubusercontent.com/Ahmet7851/task-manager/refs/heads/main/Screeenshots/back-end.png)" alt="Back-end Ekranı" width="400"/>
+  <img src="https://raw.githubusercontent.com/Ahmet7851/task-manager/refs/heads/main/Screeenshots/back-end.png" alt="Back-end Ekranı" width="400"/>
 
 </div>
 
