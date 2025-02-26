@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace TaskManager.Models;
-
+// Deneme Satırı
 public class UserTask
 {
     [Key]
