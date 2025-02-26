@@ -1,13 +1,5 @@
 # 🚀 Task Manager | Modern Görev Yönetim Sistemi
 
-<div align="center">
-  <img src="https://your-image-url.com/project-logo.png" alt="Task Manager Logo" width="200"/>
-  
-  ![GitHub stars](https://img.shields.io/github/stars/[kullanıcı-adınız]/task-manager?style=social)
-  ![GitHub forks](https://img.shields.io/github/forks/[kullanıcı-adınız]/task-manager?style=social)
-  ![GitHub issues](https://img.shields.io/github/issues/[kullanıcı-adınız]/task-manager)
-  ![GitHub license](https://img.shields.io/github/license/[kullanıcı-adınız]/task-manager)
-</div>
 
 ## 📋 Proje Hakkında
 
