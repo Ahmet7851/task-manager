@@ -84,7 +84,12 @@ Task Manager, modern iş hayatının karmaşık görev yönetimi ihtiyaçların�
    \`\`\`
 
 ## 📱 Ekran Görüntüleri
+### Back-end kısmı Front-end kullanılarak bir arayüz eklenmemiş şekilde
+<div align="center">
+  <img src="screenshots/back-end.png" alt="Back-end Ekranı" width="400"/>
 
+</div>
+### Front-end kullanılarak bir arayüz eklenmiş şekilde
 <div align="center">
   <img src="screenshots/login.png" alt="Giriş Ekranı" width="400"/>
   <img src="screenshots/dashboard.png" alt="Görev Paneli" width="400"/>
