@@ -126,10 +126,9 @@ DELETE /api/tasks/{id}
 
 ## 📞 İletişim
 
-- Website: [your-website.com](https://your-website.com)
-- Twitter: [@twitter_handle](https://twitter.com/twitter_handle)
-- LinkedIn: [linkedin_profile](https://linkedin.com/in/linkedin_profile)
-- E-mail: your.email@example.com
+- LinkedIn: [linkedin_profile](https://www.linkedin.com/in/ahmetblt/)
+- E-mail: ahmetblt2000@gmail.com
+
 
 ---
 
